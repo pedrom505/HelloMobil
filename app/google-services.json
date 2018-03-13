@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "481488234571",
+    "firebase_url": "https://hellomobil-67d76.firebaseio.com",
+    "project_id": "hellomobil-67d76",
+    "storage_bucket": "hellomobil-67d76.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:481488234571:android:6a1033894f0274fc",
+        "android_client_info": {
+          "package_name": "com.decisionmind.pedro.hellomobil"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "481488234571-3mkq40atd6jpj66c0fibsndj61v6uqhm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.decisionmind.pedro.hellomobil",
+            "certificate_hash": "6e370121a0434ef35e2be7bfbcc2f11830171dae"
+          }
+        },
+        {
+          "client_id": "481488234571-tccls39vqeqb54555c47662bi9a47180.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1Od0AwZ4DLtqKfzDsoN0MQMjX84EbhOU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "481488234571-tccls39vqeqb54555c47662bi9a47180.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
