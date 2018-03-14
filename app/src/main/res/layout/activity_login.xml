@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editText_Name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -36,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/editText_RC"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -47,37 +47,37 @@
         android:textAlignment="center"
         android:textColor="@color/textColorPrimary"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_Name" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/editText_DDD"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="41"
+        android:hint="(41)"
         android:inputType="number"
         android:textAlignment="center"
         android:textColor="@color/textColorPrimary"
-        app:layout_constraintStart_toEndOf="@+id/editText2"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintStart_toEndOf="@+id/editText_RC"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Name" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/editText_Phone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="995823635"
+        android:hint="99999-9999"
         android:inputType="number"
         android:textAlignment="viewStart"
         android:textColor="@color/textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editText3"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintStart_toEndOf="@+id/editText_DDD"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Name" />
 
     <Button
         android:id="@+id/button2"
@@ -94,5 +94,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_Phone" />
 </android.support.constraint.ConstraintLayout>
