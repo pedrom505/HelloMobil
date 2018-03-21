@@ -16,6 +16,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.decisionmind.pedro.hellomobil.config.configFireBase;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.auth.FirebaseUser;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -60,11 +64,29 @@ public class RegisterActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(RegisterActivity.this, "Cadastro do usuário realizado com sucesso", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                    startActivity(intent);
+                    FirebaseUser firebaseUser = task.getResult().getUser();
+
+                    user.setId(firebaseUser.getUid());
+                    user.save();
+
+                    authentication.signOut();
                     finish();
                 }else{
-                    Toast.makeText(RegisterActivity.this, "Não foi possivel cadastrar o usuário", Toast.LENGTH_LONG).show();
+
+                    String error;
+
+                    try{
+                        throw task.getException();
+                    }catch (FirebaseAuthWeakPasswordException e){
+                        error = "Digite uma senha mais forte. Ela deve conter caracteres e numeros!";
+                    }catch (FirebaseAuthInvalidCredentialsException e){
+                        error = "O e-mail digitado é invalido!";
+                    }catch (FirebaseAuthUserCollisionException e){
+                        error = "O e-mail informado já está sendo utilizado!";
+                    }catch (Exception e){
+                        error = "Não foi possivel efetuar o cadastro!";
+                    }
+                    Toast.makeText(RegisterActivity.this, "Erro: " + error, Toast.LENGTH_LONG).show();
                 }
             }
         });

@@ -1,5 +1,9 @@
 package com.decisionmind.pedro.hellomobil.model;
 
+import com.google.firebase.database.DatabaseReference;
+import com.decisionmind.pedro.hellomobil.config.configFireBase;
+import com.google.firebase.database.Exclude;
+
 /**
  * Created by pedro on 20/03/18.
  */
@@ -15,6 +19,12 @@ public class User {
 
     }
 
+    public void save(){
+        DatabaseReference databaseReference = configFireBase.getFireBase();
+        databaseReference.child("usuarios").child(getId()).setValue(this);
+    }
+
+    @Exclude
     public String getId() {
         return id;
     }
@@ -39,6 +49,7 @@ public class User {
         this.email = email;
     }
 
+    @Exclude
     public String getPassword() {
         return password;
     }

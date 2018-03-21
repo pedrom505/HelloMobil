@@ -79,8 +79,8 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/iconDim"
+        android:layout_height="@dimen/iconDim"
         android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/editText_Name"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,8 +89,8 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/iconDim"
+        android:layout_height="@dimen/iconDim"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/editText_Email"
@@ -100,8 +100,8 @@
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/iconDim"
+        android:layout_height="@dimen/iconDim"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/editText_Password"

@@ -78,8 +78,8 @@
 
     <ImageView
         android:id="@+id/imageView9"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/iconDim"
+        android:layout_height="@dimen/iconDim"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/email"
@@ -89,8 +89,8 @@
 
     <ImageView
         android:id="@+id/imageView10"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/iconDim"
+        android:layout_height="@dimen/iconDim"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:src="@drawable/password"

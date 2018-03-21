@@ -2,4 +2,5 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="logoWidth">250dp</dimen>
     <dimen name="logoHeight">163dp</dimen>
+    <dimen name="iconDim">40dp</dimen>
 </resources>
