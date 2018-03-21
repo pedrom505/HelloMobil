@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">HelloMobil</string>
     <string name="title_activity_main2">Main2Activity</string>
-    <string name="Button_Register">Cadastrar</string>
-    <string name="Button_Validate">Validar</string>
+    <string name="button_Register">Cadastrar</string>
+    <string name="button_Validate">Validar</string>
+    <string name="button_Login">Logar</string>
+    <string name="hint_editText_Email">Digite seu e-mail</string>
+    <string name="hint_editText_Password">Digite sua senha</string>
+    <string name="textView_Register">Não tem conta? Cadastre-se</string>
+    <string name="hint_editText_Name">Digite seu nome</string>
+    <string name="hint_editText_email">Digite seu email</string>
 </resources>
