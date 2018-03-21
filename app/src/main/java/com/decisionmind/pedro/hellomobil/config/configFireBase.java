@@ -1,5 +1,6 @@
 package com.decisionmind.pedro.hellomobil.config;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -10,6 +11,8 @@ import com.google.firebase.database.FirebaseDatabase;
 public final class configFireBase {
 
     private static DatabaseReference referenceFireBase;
+    private static FirebaseAuth authentication;
+
 
     public static DatabaseReference getFireBase(){
 
@@ -17,6 +20,13 @@ public final class configFireBase {
             referenceFireBase = FirebaseDatabase.getInstance().getReference();
         }
         return referenceFireBase;
+    }
+
+    public static FirebaseAuth getFireBaseAuth(){
+        if(authentication == null){
+            authentication = FirebaseAuth.getInstance();
+        }
+        return authentication;
     }
 
 
