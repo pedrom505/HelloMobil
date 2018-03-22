@@ -20,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
+import com.decisionmind.pedro.hellomobil.helper.Base64Custom;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -74,10 +75,13 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this, "Cadastro do usuário realizado com sucesso", Toast.LENGTH_LONG).show();
                     FirebaseUser firebaseUser = task.getResult().getUser();
 
-                    user.setId(firebaseUser.getUid());
+                    String idUser = Base64Custom.CodeBase64(user.getEmail());
+
+                    user.setId(idUser);
                     user.save();
 
-                    authentication.signOut();
+                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                    startActivity(intent);
                     finish();
                 }else{
 

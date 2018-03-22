@@ -2,12 +2,16 @@ package com.decisionmind.pedro.hellomobil.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.decisionmind.pedro.hellomobil.R;
+import com.decisionmind.pedro.hellomobil.adapter.TabAdapter;
+import com.decisionmind.pedro.hellomobil.helper.SlidingTabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.decisionmind.pedro.hellomobil.config.configFireBase;
 
@@ -16,6 +20,10 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar_main;
     private FirebaseAuth authentication;
 
+    private SlidingTabLayout slidingTabLayout;
+    private ViewPager viewPager;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +31,20 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar_main = findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar_main);
+
+        slidingTabLayout = findViewById(R.id.stl_tabs);
+        viewPager = findViewById(R.id.vp_page);
+
+        //Configuring sliding tabs
+        slidingTabLayout.setDistributeEvenly(true);
+        slidingTabLayout.setSelectedIndicatorColors(ContextCompat.getColor(this, R.color.colorHighlight));
+
+        //Configuring adapter
+        TabAdapter tabAdapter = new TabAdapter( getSupportFragmentManager() );
+        viewPager.setAdapter( tabAdapter );
+
+        slidingTabLayout.setViewPager( viewPager );
+
 
     }
 
