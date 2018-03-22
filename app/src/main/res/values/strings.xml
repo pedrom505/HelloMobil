@@ -9,4 +9,9 @@
     <string name="textView_Register">Não tem conta? Cadastre-se</string>
     <string name="hint_editText_Name">Digite seu nome</string>
     <string name="hint_editText_email">Digite seu email</string>
+    <string name="item_exit">Sair</string>
+
+    <string name="item_search">Pesquisar</string>
+    <string name="item_settings">Configurações</string>
+    <string name="item_add">Adicionar</string>
 </resources>

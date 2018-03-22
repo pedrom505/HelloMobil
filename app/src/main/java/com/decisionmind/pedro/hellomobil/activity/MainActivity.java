@@ -1,18 +1,19 @@
 package com.decisionmind.pedro.hellomobil.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.decisionmind.pedro.hellomobil.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.decisionmind.pedro.hellomobil.config.configFireBase;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
-    private Button button_press;
+    private Toolbar toolbar_main;
     private FirebaseAuth authentication;
 
     @Override
@@ -20,16 +21,40 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        button_press = findViewById(R.id.button_press);
-        button_press.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                authentication = configFireBase.getFireBaseAuth();
-                authentication.signOut();
+        toolbar_main = findViewById(R.id.toolbar_main);
+        setSupportActionBar(toolbar_main);
 
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
-        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.item_add:
+                return true;
+            case R.id.item_search:
+                return true;
+            case R.id.item_settings:
+                return true;
+            case R.id.item_exit:
+                UserLogout();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void UserLogout(){
+        authentication = configFireBase.getFireBaseAuth();
+        authentication.signOut();
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

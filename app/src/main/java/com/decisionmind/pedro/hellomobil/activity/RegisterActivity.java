@@ -45,36 +45,17 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String message = "";
-                int errorCount = 0 ;
-
-                if(editText_Name.getText().toString().equals("")) {
-                    errorCount += 1;
-                    message += "- nome ";
-                }
-                if(editText_Email.getText().toString().equals("")){
-                    errorCount += 1;
-                    message += "- email ";
-                }
-                if(editText_Password.getText().toString().equals("")){
-                    errorCount += 1;
-                    message += "- senha ";
-                }
-
-                if(errorCount == 0){
-                    user = new User();
-                    user.setName(editText_Name.getText().toString());
-                    user.setEmail(editText_Email.getText().toString());
-                    user.setPassword(editText_Password.getText().toString());
-                    userRegister();
+                String name = editText_Name.getText().toString();
+                String email = editText_Email.getText().toString();
+                String password = editText_Password.getText().toString();
+                if(name.equals("") || email.equals("") || password.equals("")) {
+                    Toast.makeText(RegisterActivity.this, "Por favor, preencha todos os campos acima!", Toast.LENGTH_LONG).show();
                 }else{
-                    if(errorCount == 1){
-                        message = "Por favor, preencha o campo " + message;
-                    }else{
-                        message = "Por favor, preencha os campos "  + message;
-                    }
-
-                    Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_LONG).show();
+                    user = new User();
+                    user.setName(name);
+                    user.setEmail(email);
+                    user.setPassword(password);
+                    userRegister();
                 }
             }
         });

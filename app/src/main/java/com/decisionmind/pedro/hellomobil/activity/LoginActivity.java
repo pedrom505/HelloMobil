@@ -39,10 +39,19 @@ public class LoginActivity extends Activity {
         button_Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user = new User();
-                user.setEmail(editText_email.getText().toString());
-                user.setPassword(editText_Password.getText().toString());
-                LoginValidator();
+
+                String email = editText_email.getText().toString();
+                String password = editText_Password.getText().toString();
+
+                if(email.equals("") || password.equals("")){
+                    Toast.makeText(LoginActivity.this, "Por favor, preencha todos os campos acima!", Toast.LENGTH_LONG).show();
+                }else{
+                    user = new User();
+                    user.setEmail(email);
+                    user.setPassword(password);
+                    LoginValidator();
+                }
+
             }
         });
     }
