@@ -44,11 +44,38 @@ public class RegisterActivity extends AppCompatActivity {
         button_Register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user = new User();
-                user.setName(editText_Name.getText().toString());
-                user.setEmail(editText_Email.getText().toString());
-                user.setPassword(editText_Password.getText().toString());
-                userRegister();
+
+                String message = "";
+                int errorCount = 0 ;
+
+                if(editText_Name.getText().toString().equals("")) {
+                    errorCount += 1;
+                    message += "- nome ";
+                }
+                if(editText_Email.getText().toString().equals("")){
+                    errorCount += 1;
+                    message += "- email ";
+                }
+                if(editText_Password.getText().toString().equals("")){
+                    errorCount += 1;
+                    message += "- senha ";
+                }
+
+                if(errorCount == 0){
+                    user = new User();
+                    user.setName(editText_Name.getText().toString());
+                    user.setEmail(editText_Email.getText().toString());
+                    user.setPassword(editText_Password.getText().toString());
+                    userRegister();
+                }else{
+                    if(errorCount == 1){
+                        message = "Por favor, preencha o campo " + message;
+                    }else{
+                        message = "Por favor, preencha os campos "  + message;
+                    }
+
+                    Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_LONG).show();
+                }
             }
         });
 
