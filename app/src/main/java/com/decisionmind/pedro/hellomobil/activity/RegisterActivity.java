@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.decisionmind.pedro.hellomobil.R;
+import com.decisionmind.pedro.hellomobil.helper.Preferences;
 import com.decisionmind.pedro.hellomobil.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -75,10 +76,13 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this, "Cadastro do usuário realizado com sucesso", Toast.LENGTH_LONG).show();
                     FirebaseUser firebaseUser = task.getResult().getUser();
 
-                    String idUser = Base64Custom.CodeBase64(user.getEmail());
+                    String userID = Base64Custom.CodeBase64(user.getEmail());
 
-                    user.setId(idUser);
+                    user.setId(userID);
                     user.save();
+
+                    Preferences preferences = new Preferences(RegisterActivity.this);
+                    preferences.SaveUserPreferences(userID);
 
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                     startActivity(intent);

@@ -17,9 +17,7 @@ public class Preferences {
     private int MODE = 0;
     private SharedPreferences.Editor editor;
 
-    private String KEY_NAME = "name";
-    private  String KEY_PHONE = "phone";
-    private String KEY_TOKEN = "token";
+    private String KEY_ID = "IDLogginUser";
 
     public Preferences(Context contextParameter){
         context = contextParameter;
@@ -27,20 +25,15 @@ public class Preferences {
         editor = preferences.edit();
     }
 
-    public void SaveUserPreferences (String name, String phone, String token){
-        editor.putString(KEY_NAME, name);
-        editor.putString(KEY_PHONE, phone);
-        editor.putString(KEY_TOKEN, token);
+    public void SaveUserPreferences (String userID){
+        editor.putString(KEY_ID, userID);
+
         editor.commit();
     }
 
-    public HashMap<String, String> getUserData(){
-        HashMap<String, String> userData = new HashMap<>();
-        userData.put(KEY_NAME, preferences.getString(KEY_NAME, null));
-        userData.put(KEY_PHONE, preferences.getString(KEY_PHONE, null));
-        userData.put(KEY_TOKEN, preferences.getString(KEY_TOKEN, null));
-
-        return userData;
+    public String getID(){
+        return preferences.getString(KEY_ID, null);
     }
+
 
 }

@@ -37,17 +37,7 @@ public class ValidatorActivity extends Activity {
             @Override
             public void onClick(View v) {
                 //Recovering user preferences data
-                Preferences preference = new Preferences(ValidatorActivity.this);
-                HashMap<String, String> usuario = preference.getUserData();
 
-                String token = usuario.get("token");
-                String tokenTyped = editText_validationCode.getText().toString();
-
-                if(tokenTyped.equals(token)){
-                    Toast.makeText(ValidatorActivity.this, "Token VALIDADO", Toast.LENGTH_LONG).show();
-                }else{
-                    Toast.makeText(ValidatorActivity.this, "Token NÃO VALIDADO", Toast.LENGTH_LONG).show();
-                }
             }
         });
 

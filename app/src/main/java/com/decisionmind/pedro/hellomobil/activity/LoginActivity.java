@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.decisionmind.pedro.hellomobil.R;
+import com.decisionmind.pedro.hellomobil.helper.Base64Custom;
+import com.decisionmind.pedro.hellomobil.helper.Preferences;
 import com.decisionmind.pedro.hellomobil.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -74,6 +76,11 @@ public class LoginActivity extends Activity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
+
+                    Preferences preferences = new Preferences(LoginActivity.this);
+                    String userID = Base64Custom.CodeBase64(user.getEmail());
+                    preferences.SaveUserPreferences(userID);
+
                     Toast.makeText(LoginActivity.this, "Login efetuado com sucesso!", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
