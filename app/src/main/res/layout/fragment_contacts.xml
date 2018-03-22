@@ -4,9 +4,8 @@
     android:layout_height="match_parent"
     tools:context="com.decisionmind.pedro.hellomobil.fragment.ContactsFragment">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Contatos" />
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/lv_contacts"/>
 </FrameLayout>
