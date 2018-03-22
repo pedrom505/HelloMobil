@@ -19,11 +19,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity"/>
-        <activity android:name=".activity.ValidatorActivity"/>
-        <activity android:name=".activity.RegisterActivity"/>
-
-
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.ValidatorActivity" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.AboutActivity" />
+        <activity android:name=".activity.ChatActivity"
+            android:parentActivityName=".activity.MainActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
 
         slidingTabLayout.setViewPager( viewPager );
 
-
     }
 
     @Override
@@ -78,6 +77,9 @@ public class MainActivity extends AppCompatActivity {
                 AddContactWindow();
                 return true;
             case R.id.item_search:
+                return true;
+            case R.id.item_about:
+                OpenAboutWindow();
                 return true;
             case R.id.item_settings:
                 return true;
@@ -169,5 +171,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    public void OpenAboutWindow(){
+        Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+        startActivity(intent);
     }
 }

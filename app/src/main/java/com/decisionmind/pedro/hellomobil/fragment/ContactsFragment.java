@@ -1,15 +1,18 @@
 package com.decisionmind.pedro.hellomobil.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.decisionmind.pedro.hellomobil.R;
+import com.decisionmind.pedro.hellomobil.activity.ChatActivity;
 import com.decisionmind.pedro.hellomobil.helper.Preferences;
 import com.decisionmind.pedro.hellomobil.model.Contact;
 import com.google.firebase.database.DataSnapshot;
@@ -30,11 +33,24 @@ public class ContactsFragment extends Fragment {
     private ArrayAdapter adapter;
     private ArrayList<String> contacts;
     private DatabaseReference fireBase;
+    private ValueEventListener eventListenerContacts;
 
     public ContactsFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        fireBase.addValueEventListener(eventListenerContacts);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        // When the app is finish or he fragment is not showing the event listener is stopped
+        fireBase.removeEventListener(eventListenerContacts);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,8 +75,7 @@ public class ContactsFragment extends Fragment {
         String userID = preferences.getID();
         fireBase = configFireBase.getFireBase().child("contatos").child(userID);
 
-        //
-        fireBase.addValueEventListener(new ValueEventListener() {
+        eventListenerContacts = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -79,7 +94,16 @@ public class ContactsFragment extends Fragment {
             public void onCancelled(DatabaseError databaseError) {
 
             }
+        };
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), ChatActivity.class);
+                startActivity(intent);
+            }
         });
+
 
 
         return view;
