@@ -13,6 +13,7 @@ import android.widget.ListView;
 
 import com.decisionmind.pedro.hellomobil.R;
 import com.decisionmind.pedro.hellomobil.activity.ChatActivity;
+import com.decisionmind.pedro.hellomobil.adapter.ContactsAdapter;
 import com.decisionmind.pedro.hellomobil.helper.Preferences;
 import com.decisionmind.pedro.hellomobil.model.Contact;
 import com.google.firebase.database.DataSnapshot;
@@ -31,7 +32,7 @@ public class ContactsFragment extends Fragment {
 
     private ListView listView;
     private ArrayAdapter adapter;
-    private ArrayList<String> contacts;
+    private ArrayList<Contact> contacts;
     private DatabaseReference fireBase;
     private ValueEventListener eventListenerContacts;
 
@@ -63,11 +64,13 @@ public class ContactsFragment extends Fragment {
         listView = view.findViewById(R.id.lv_contacts);
 
         //Mount listview and adapter
-        adapter = new ArrayAdapter(
+        /*adapter = new ArrayAdapter(
                 getActivity(),
                 android.R.layout.simple_list_item_1,
                 contacts
-        );
+        );*/
+        adapter = new ContactsAdapter(getActivity(), contacts);
+
         listView.setAdapter(adapter);
 
         //Recovering firebase contacts
@@ -85,7 +88,7 @@ public class ContactsFragment extends Fragment {
                 //Listing contacts
                 for (DataSnapshot data: dataSnapshot.getChildren()){
                     Contact contact = data.getValue(Contact.class);
-                    contacts.add(contact.getName());
+                    contacts.add( contact );
                 }
                 adapter.notifyDataSetChanged();
             }
