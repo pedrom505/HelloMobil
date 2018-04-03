@@ -30,7 +30,7 @@ import com.google.firebase.database.ValueEventListener;
 public class ContactsFragment extends Fragment {
 
 
-    private ListView listView;
+    private ListView listView_contacts;
     private ArrayAdapter adapter;
     private ArrayList<Contact> contacts;
     private DatabaseReference fireBase;
@@ -61,7 +61,7 @@ public class ContactsFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_contacts, container, false);
-        listView = view.findViewById(R.id.lv_contacts);
+        listView_contacts = view.findViewById(R.id.listView_contacts);
 
         //Mount listview and adapter
         /*adapter = new ArrayAdapter(
@@ -71,7 +71,7 @@ public class ContactsFragment extends Fragment {
         );*/
         adapter = new ContactsAdapter(getActivity(), contacts);
 
-        listView.setAdapter(adapter);
+        listView_contacts.setAdapter(adapter);
 
         //Recovering firebase contacts
         Preferences preferences = new Preferences(getActivity());
@@ -99,7 +99,7 @@ public class ContactsFragment extends Fragment {
             }
         };
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView_contacts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getActivity(), ChatActivity.class);

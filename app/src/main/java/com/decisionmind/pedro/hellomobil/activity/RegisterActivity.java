@@ -74,7 +74,6 @@ public class RegisterActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(RegisterActivity.this, "Cadastro do usuário realizado com sucesso", Toast.LENGTH_LONG).show();
-                    FirebaseUser firebaseUser = task.getResult().getUser();
 
                     String userID = Base64Custom.CodeBase64(user.getEmail());
 
